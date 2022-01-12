@@ -1,9 +1,37 @@
-import Head from 'next/head';
 import Card from '../components/Card';
 import { useState } from 'react';
 import Pagination from '../components/Pagination';
 import ChallengeRequirements from "../components/ChallengeRequirements";
 import { useQuery } from 'react-query';
+
+
+interface BlogPost {
+  title: string,
+  description: string,
+  createdAt: string,
+  updatedAt: string,
+  id: string,
+  authors: [
+    {
+      createdAt: string,
+      name: string,
+      avatar: string,
+      updatedAt: string,
+      id: string,
+      postId: string,
+    }
+  ],
+  comments: [
+    {
+      createdAt: string,
+      title: string,
+      description: string,
+      updatedAt: string,
+      id: string,
+      postId: string,
+    }
+  ]
+}
 
 export default function Home() {
   
@@ -23,9 +51,11 @@ export default function Home() {
   const currentPosts = isLoading ? [] : data.slice(indexOfFirstPost, indexOfLastPost);
 
   // Change Page
+  //@ TODO Make Pagination into Hook.
   const paginate = (pageNumber:any) => setCurrentPage(pageNumber);
 
   // Sorting by date
+  // @ TODO Abstract Function out.
   function sortByDate(a:any, b:any){
     let d1 = new Date(a.createdAt);
     let d2 = new Date(b.createdAt);
@@ -57,7 +87,8 @@ export default function Home() {
             <div className="container">
               <div className="row">
                   <h2 className="d-block">Recent Blog Posts</h2>
-                  {currentPosts.map((post:any) => (
+                  {/* @TODO // Make Card component take in less information */}
+                  {currentPosts.map((post:BlogPost) => (
                     <Card 
                       key={post.id}
                       authors={post.authors}

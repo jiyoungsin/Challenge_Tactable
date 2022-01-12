@@ -1,22 +1,46 @@
 import React from 'react'
 import Link from 'next/link';
-import blogPost from '../pages/blogPost';
 
-export default function Card(props) {
+// make interface into DRY code.
+interface BlogPost {
+    title: string,
+    description: string,
+    createdAt: string,
+    updatedAt: string,
+    id: string,
+    authors: [
+      {
+        createdAt: string,
+        name: string,
+        avatar: string,
+        updatedAt: string,
+        id: string,
+        postId: string,
+      }
+    ],
+    comments: [
+      {
+        createdAt: string,
+        title: string,
+        description: string,
+        updatedAt: string,
+        id: string,
+        postId: string,
+      }
+    ]
+}
+
+export default function Card(props:BlogPost) {
     const {
-        authors,
-        comments,
         createdAt,
-        description,
         id,
         title,
-        updatedAt,
     } = props;
 
     return (
         <div className="col-4">
             <article className="card bg-theme">
-                {/* // routing could be done with [] square brackets. Dynamic routing. */}
+                {/* // routing could be done with [] square brackets. Dynamic routing. Looks Weird */}
                 <Link href={{pathname: `/blogPost`, query: {id}}}>
                     <div className="position-relative">
                         <img className="card-img img-cover dynamic-cover-img-size" src="https://picsum.photos/200" alt="an image"/>

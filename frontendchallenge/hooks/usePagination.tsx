@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { string } from 'prop-types'
 
+// Attempt at hook. Ran out of time.
 interface BlogPost {
     title: string,
     description: string,

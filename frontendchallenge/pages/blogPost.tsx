@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
+// @TODO Abstract interface to new file.
 interface BlogPost {
     title: string,
     description: string,
