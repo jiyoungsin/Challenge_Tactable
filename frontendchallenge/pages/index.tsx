@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import Card from '../components/Card';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Pagination from '../components/Pagination';
 import ChallengeRequirements from "../components/ChallengeRequirements";
 import { useQuery } from 'react-query';
-import usePagination from "../hooks/usePagination";
 
 export default function Home() {
   
@@ -53,7 +52,7 @@ export default function Home() {
           Tactable Front-End Challenge!
         </h1>
         <ChallengeRequirements/>
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-12 col-lg-9">
             <div className="container">
               <div className="row">

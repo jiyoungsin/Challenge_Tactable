@@ -16,6 +16,7 @@ export default function Card(props) {
     return (
         <div className="col-4">
             <article className="card bg-theme">
+                {/* // routing could be done with [] square brackets. Dynamic routing. */}
                 <Link href={{pathname: `/blogPost`, query: {id}}}>
                     <div className="position-relative">
                         <img className="card-img img-cover dynamic-cover-img-size" src="https://picsum.photos/200" alt="an image"/>
